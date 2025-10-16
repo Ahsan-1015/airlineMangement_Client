@@ -4,6 +4,8 @@ import Bookings from "../Pages/Bookings.jsx";
 import Contact from "../Pages/Contact.jsx";
 import Flights from "../Pages/Flights.jsx";
 import Home from "../Pages/Home.jsx";
+import Login from "../Pages/Login.jsx";
+import Register from "../Pages/Register.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +27,14 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
     ],
   },

@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider.jsx";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
   const navLinks = (
     <>
       <li>
@@ -8,7 +11,7 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "text-primary border-b-2 border-primary font-semibold bg-primary/10"
+              ? "text-primary  border-b-2 border-primary font-semibold bg-primary/10"
               : ""
           }
         >
@@ -97,12 +100,42 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link
-            to="/bookings"
-            className="btn text-white border-0 px-8 bg-gradient-to-r from-primary to-purple-500"
-          >
-            Login
-          </Link>
+          {user ? (
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="User Profile"
+                    src={user?.photoURL || "https://i.ibb.co/6n21hW3/user.png"}
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              >
+                <li>
+                  <p className="justify-between">
+                    {user?.displayName || "user"}
+                  </p>
+                </li>
+                <li>
+                  <button onClick={logOut}>Logout</button>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <Link
+              to="/login"
+              className="btn text-white border-0 px-8 bg-gradient-to-r from-primary to-purple-500"
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>

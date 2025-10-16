@@ -1,12 +1,12 @@
-import daisyui from "daisyui";
-
 /** @type {import('tailwindcss').Config} */
+import daisyui from 'daisyui';
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: 'class',
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       fontFamily: {
-        "ysabeau-infant": ['Ysabeau Infant', "sans-serif"],
+        lato: "'Lato', sans-serif",
       },
     },
   },
