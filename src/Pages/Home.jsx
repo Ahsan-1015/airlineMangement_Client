@@ -116,21 +116,39 @@ const Home = () => {
                       Class
                     </span>
                   </label>
-                  <div className="relative w-full">
+                  <div className="input input-bordered  w-full flex items-center gap-2 relative">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="currentColor"
-                      className="w-5 h-5 text-base-content/60 absolute left-3 top-1/2 -translate-y-1/2"
+                      className="w-5 h-5 text-base-content/60 shrink-0"
                     >
                       <path d="M3 6.75A2.25 2.25 0 0 1 5.25 4.5h13.5A2.25 2.25 0 0 1 21 6.75V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V6.75z" />
                     </svg>
-                    <select className="select select-bordered w-full pl-9 bg-base-100 shadow-md rounded-lg">
-                      <option>Economy</option>
-                      <option>Premium Economy</option>
-                      <option>Business</option>
-                      <option>First Class</option>
+                    <select className="grow bg-white text-black outline-none appearance-none p-2 rounded-md">
+                      <option className="p-10 bg-white rounded-md">
+                        Economy
+                      </option>
+
+                      <option className="p-10 bg-white rounded-md">
+                        Business
+                      </option>
+                      <option className="p-10 bg-white rounded-md">
+                        First Class
+                      </option>
                     </select>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="w-5 h-5 text-base-content/60 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
                   </div>
                 </div>
 
