@@ -1,12 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PiAirplaneTakeoffLight } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import { BookingContext } from "../Providers/BookingProvider";
 
 const Flights = () => {
+  const { user } = useContext(AuthContext);
+  const { addBooking } = useContext(BookingContext);
+  const navigate = useNavigate();
   const [flights, setFlights] = useState([]);
   const [filteredFlights, setFilteredFlights] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("priceLowToHigh");
   const [selectedClass, setSelectedClass] = useState("All Classes");
+  const [bookingStatus, setBookingStatus] = useState(null);
 
   useEffect(() => {
     fetch("/flights.json")
@@ -70,6 +77,39 @@ const Flights = () => {
     }
 
     setFilteredFlights(results);
+  };
+
+  const handleBookNow = async (flight) => {
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+
+    const newBooking = {
+      userId: user.uid,
+      flightNo: flight.flight_number,
+      bookingId: `BK-${Date.now()}`,
+      from: flight.departure_location,
+      to: flight.arrival_location,
+      date: new Date().toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      }),
+      time: flight.departure_time,
+      passenger: user.displayName || "User",
+      seat: `${Math.floor(Math.random() * 30) + 1}${
+        ["A", "B", "C", "D", "E", "F"][Math.floor(Math.random() * 6)]
+      } • ${flight.class}`,
+      status: "Confirmed",
+      price: flight.price,
+      category: "upcoming",
+      bookingDate: new Date().toISOString(),
+    };
+
+    await addBooking(newBooking);
+    setBookingStatus(`Successfully booked flight ${flight.flight_number}!`);
+    setTimeout(() => setBookingStatus(null), 3000);
   };
 
   const getClassStyles = (flightClass) => {
@@ -136,6 +176,14 @@ const Flights = () => {
           </button>
         </div>
       </div>
+
+      {bookingStatus && (
+        <div className="container mx-auto p-4">
+          <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-lg shadow-md">
+            <p>{bookingStatus}</p>
+          </div>
+        </div>
+      )}
 
       {/* Available Flights */}
       <div className="container mx-auto p-4 ">
@@ -224,7 +272,10 @@ const Flights = () => {
                     ${flight.price}
                   </span>
                 </p>
-                <button className="w-full md:w-auto bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <button
+                  onClick={() => handleBookNow(flight)}
+                  className="w-full md:w-auto bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                >
                   Book Now
                 </button>
               </div>
