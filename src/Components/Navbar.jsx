@@ -124,6 +124,9 @@ const Navbar = () => {
                     {user?.displayName || "user"}
                   </p>
                 </li>
+                <li>
+                  <Link to="/dashboard">Dashboard</Link>
+                </li>
                 <li className="mt-2 text-ellipsis overflow-hidden text-blue-500 font-semibold">
                   <button onClick={logOut}>
                     <CiLogout /> Logout
