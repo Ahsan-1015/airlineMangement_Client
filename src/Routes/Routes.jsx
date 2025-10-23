@@ -1,17 +1,17 @@
+import MainLayout from "@/Layout/MainLayout.jsx";
+import Bookings from "@/pages/Bookings.jsx";
+import Contact from "@/pages/Contact.jsx";
+import Dashboard from "@/pages/Dashboard/Dashboard.jsx";
+import DashboardHome from "@/pages/Dashboard/DashboardHome.jsx";
+import MyBookings from "@/pages/Dashboard/MyBookings.jsx";
+import MyFlights from "@/pages/Dashboard/MyFlights.jsx";
+import Profile from "@/pages/Dashboard/Profile.jsx";
+import ErrorPage from "@/pages/ErrorPage.jsx";
+import Flights from "@/pages/Flights.jsx";
+import Home from "@/pages/Home.jsx";
+import Login from "@/pages/Login.jsx";
+import Register from "@/pages/Register.jsx";
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../Layout/MainLayout.jsx";
-import Bookings from "../pages/Bookings.jsx";
-import Contact from "../pages/Contact.jsx";
-import Dashboard from "../pages/Dashboard/Dashboard.jsx";
-import DashboardHome from "../pages/Dashboard/DashboardHome.jsx";
-import MyBookings from "../pages/Dashboard/MyBookings.jsx";
-import MyFlights from "../pages/Dashboard/MyFlights.jsx";
-import Profile from "../pages/Dashboard/Profile.jsx";
-import ErrorPage from "../pages/ErrorPage.jsx";
-import Flights from "../pages/Flights.jsx";
-import Home from "../pages/Home.jsx";
-import Login from "../pages/Login.jsx";
-import Register from "../pages/Register.jsx";
 
 export const router = createBrowserRouter([
   {
