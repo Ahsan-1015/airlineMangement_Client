@@ -10,8 +10,8 @@ import Profile from "../pages/Dashboard/Profile.jsx";
 import ErrorPage from "../pages/ErrorPage.jsx";
 import Flights from "../pages/Flights.jsx";
 import Home from "../pages/Home.jsx";
-import Login from "../Pages/Login.jsx";
-import Register from "../Pages/Register.jsx";
+import Login from "../pages/Login.jsx";
+import Register from "../pages/Register.jsx";
 
 export const router = createBrowserRouter([
   {
